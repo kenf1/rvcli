@@ -13,7 +13,8 @@
 			],
 			"settings": {
 				"code-runner.enableAppInsights": false,
-				"telemetry.feedback.enabled": false
+				"telemetry.feedback.enabled": false,
+				"chat.mcp.enabled": false
 			}
 		}
 	}
