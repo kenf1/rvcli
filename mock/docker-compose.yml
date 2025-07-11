@@ -1,0 +1,8 @@
+services:
+  wiremock:
+    image: wiremock/wiremock
+    ports:
+      - "8070:8070"
+    volumes:
+      - ./wiremock:/home/wiremock
+    command: [ "--port", "8070" ]

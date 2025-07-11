@@ -4,22 +4,33 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/joho/godotenv"
 	"github.com/kenf1/rvcli/logic"
 )
 
 func main() {
+	fmt.Println("\nrvcli: A simple cli to setup rvapi configs\n\n")
+
 	//load user configs
-	envFile := "userconfig.env"
-	err := godotenv.Load(envFile)
+	rvconfig := "rvconfig.env"
+	err := logic.ImportEnv(rvconfig)
 	if err != nil {
-		fmt.Println("Unable to find .env file")
-		return
+		config_fields := []string{"username", "password", "fullname", "email", "host"}
+
+		err := logic.PromptTextWrapper(config_fields)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		err1 := logic.CreateEnv(rvconfig)
+		if err1 != nil {
+			fmt.Println(err)
+			return
+		}
 	}
 
 	apiConfig := logic.ApiConfig{
-		Host: "http://localhost",
-		Port: "8080",
+		Host: os.Getenv("HOST"),
 	}
 
 	userConfig := logic.UserConfig{
@@ -48,7 +59,9 @@ func main() {
 			return
 		}
 
-		fmt.Println(res)
-		// logic.AppendJWT(userConfig, res, envFile)
+		fmt.Println(res.Token)
+		logic.AppendJWT(res.Token, rvconfig)
+	} else {
+		fmt.Println("Your jwt token is:", userConfig.JwtToken)
 	}
 }
