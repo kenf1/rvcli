@@ -30,7 +30,7 @@ type JWTResponse struct {
 func ImportEnv(envFile string) error {
 	err := godotenv.Load(envFile)
 	if err != nil {
-		fmt.Println("userconfig.env file not found. Answer prompts to create.\n")
+		fmt.Println("\nuserconfig.env file not found. Answer prompts to create.")
 		return err
 	}
 	return nil
@@ -47,7 +47,7 @@ func CreateEnv(envFile string) error {
 
 	//overwrite existing content
 	entry := fmt.Sprintf(
-		"USERNAME=%s\nPASSWORD=%s\nFULLNAME=%s\nEMAIL=%s\nHOST==%s\n",
+		"USERNAME=\"%s\"\nPASSWORD=\"%s\"\nFULLNAME=\"%s\"\nEMAIL=\"%s\"\nHOST=\"%s\"\n",
 		os.Getenv("USERNAME"),
 		os.Getenv("PASSWORD"),
 		os.Getenv("FULLNAME"),

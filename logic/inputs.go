@@ -8,7 +8,7 @@ import (
 )
 
 // confirm fields to create jwt token present
-func CheckInputs(userConfig UserConfig) error {
+func CheckInputs(userConfig UserConfig, apiConfig ApiConfig) error {
 	var messages []string
 
 	if userConfig.Username == "" {
@@ -22,6 +22,9 @@ func CheckInputs(userConfig UserConfig) error {
 	}
 	if userConfig.Email == "" {
 		messages = append(messages, "Email is missing")
+	}
+	if apiConfig.Host == "" {
+		messages = append(messages, "Host is missing")
 	}
 
 	if len(messages) > 0 {
