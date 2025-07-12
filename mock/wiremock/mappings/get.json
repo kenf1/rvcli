@@ -1,0 +1,16 @@
+{
+    "request": {
+        "method": "GET",
+        "url": "/get"
+    },
+    "response": {
+        "status": 200,
+        "jsonBody": {
+            "status": "success",
+            "data": "..."
+        },
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

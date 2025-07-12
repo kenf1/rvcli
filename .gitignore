@@ -23,5 +23,7 @@ go.sum
 
 #Misc
 .env
+*.env
 .DS_Store
 Dev/
+.vscode

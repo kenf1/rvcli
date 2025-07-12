@@ -1,0 +1,32 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/users/token",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": "$[?(@.username)]"
+      },
+      {
+        "matchesJsonPath": "$[?(@.password)]"
+      },
+      {
+        "matchesJsonPath": "$[?(@.fullname)]"
+      },
+      {
+        "matchesJsonPath": "$[?(@.email)]"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "status": "success",
+      "statusCode": 200,
+      "token": "actual jwt token",
+      "username": "entered username"
+    }
+  }
+}
