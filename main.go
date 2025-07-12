@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	fmt.Println("\nrvcli: A simple cli to setup rvapi configs\n\n")
+	fmt.Println("\nrvcli: A simple cli to setup rvapi configs")
 
 	//load user configs
 	rvconfig := "rvconfig.env"
@@ -46,7 +46,7 @@ func main() {
 		fmt.Println("JWT_TOKEN not found")
 
 		//confirm other fields to generate jwt token present
-		err := logic.CheckInputs(userConfig)
+		err := logic.CheckInputs(userConfig, apiConfig)
 		if err != nil {
 			fmt.Println(err)
 			return
@@ -62,6 +62,6 @@ func main() {
 		fmt.Println(res.Token)
 		logic.AppendJWT(res.Token, rvconfig)
 	} else {
-		fmt.Println("Your jwt token is:", userConfig.JwtToken)
+		fmt.Println("\nYour jwt token is:", userConfig.JwtToken)
 	}
 }

@@ -30,7 +30,7 @@ type JWTResponse struct {
 func ImportEnv(envFile string) error {
 	err := godotenv.Load(envFile)
 	if err != nil {
-		fmt.Println("userconfig.env file not found. Answer prompts to create.\n")
+		fmt.Println("\nuserconfig.env file not found. Answer prompts to create.")
 		return err
 	}
 	return nil
