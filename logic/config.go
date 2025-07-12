@@ -47,7 +47,7 @@ func CreateEnv(envFile string) error {
 
 	//overwrite existing content
 	entry := fmt.Sprintf(
-		"USERNAME=%s\nPASSWORD=%s\nFULLNAME=%s\nEMAIL=%s\nHOST==%s\n",
+		"USERNAME=\"%s\"\nPASSWORD=\"%s\"\nFULLNAME=\"%s\"\nEMAIL=\"%s\"\nHOST=\"%s\"\n",
 		os.Getenv("USERNAME"),
 		os.Getenv("PASSWORD"),
 		os.Getenv("FULLNAME"),
